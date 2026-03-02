@@ -2,7 +2,7 @@
 
 A library of 48 AI skills for Ruby on Rails development. Drop them into your project and your AI coding assistant instantly knows Rails conventions, TDD workflows, and production patterns.
 
-Works with Claude Code, GitHub Copilot, Cursor, Gemini CLI, and [30+ other tools](https://agentskills.io/specification) that support the Agent Skills standard.
+Works with Mistral Vibe, Claude Code, GitHub Copilot, Cursor, Gemini CLI, and [30+ other tools](https://agentskills.io/specification) that support the Agent Skills standard.
 
 **Stack:** Ruby 3.3+ / Rails 8.1+ / RSpec / Pundit / Hotwire / PostgreSQL / Tailwind CSS
 
