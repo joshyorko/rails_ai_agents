@@ -6,7 +6,7 @@ description: >-
   tenant scoping, or when user mentions multi-tenancy, accounts, or tenant
   separation.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+
+compatibility: Ruby 3.3+, Rails 8.0+
 metadata:
   author: 37signals
   version: "1.0"

@@ -6,7 +6,7 @@ description: >-
   custom actions. Use when adding features, creating controllers, or when
   user mentions REST, routing, controllers, or state-change resources.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Turbo
+compatibility: Ruby 3.3+, Rails 8.0+, Turbo
 metadata:
   author: 37signals
   version: "1.0"

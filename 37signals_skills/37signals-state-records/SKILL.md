@@ -6,7 +6,7 @@ description: >-
   boolean flags with record-based state, or when user mentions state records,
   closures, publications, or state tracking.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+
+compatibility: Ruby 3.3+, Rails 8.0+
 metadata:
   author: 37signals
   version: "1.0"

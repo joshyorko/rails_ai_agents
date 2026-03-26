@@ -5,7 +5,7 @@ description: >-
   Checks for rich models, CRUD controllers, proper concerns, and Hotwire usage.
   Use when requesting code review, architecture audit, or quality analysis.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+
+compatibility: Ruby 3.3+, Rails 8.0+
 metadata:
   author: 37signals
   version: "1.0"

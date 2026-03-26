@@ -1,117 +1,114 @@
-**New:** [AI Terminology Glossary](glossary.md) — 289 terms across 25 categories. Also available as a [browsable HTML version](https://thibautbaissac.github.io/ai/glossary.html).
+# Rails AI Agents
 
-# Rails AI Skills
+A production-ready Claude Code setup for Ruby on Rails development: **18 specialized agents**, **17 skills**, **10 path-scoped rules**, and **5 lifecycle hooks**. Drop it into your project and your AI assistant instantly knows Rails conventions, TDD workflows, and production patterns.
 
-A library of 48 AI skills for Ruby on Rails development. Drop them into your project and your AI coding assistant instantly knows Rails conventions, TDD workflows, and production patterns.
+Also includes:
+- separate [37signals-style collection](#37signals-collection) (18 skills).
+- Claude Code Extensibility Guide
+- AI Terminology Glossary — 289 terms across 25 categories. Also available as a [browsable HTML version](https://thibautbaissac.github.io/ai/glossary.html).
 
-Works with Mistral Vibe, Claude Code, GitHub Copilot, Cursor, Gemini CLI, and [30+ other tools](https://agentskills.io/specification) that support the Agent Skills standard.
-
-Also includes a separate [37signals-style collection](#37signals-collection) (18 skills) for teams following the Basecamp approach.
-
-
-> For original agents and skills, see [this commit](https://github.com/ThibautBaissac/rails_ai_agents/tree/15fdeaf68af5d7ef274277217af27fe5a5f07e45).
 
 ## Quick Start
 
 ```bash
-# Copy the skills into your Rails project
-cp -r .agents/ /path/to/your-rails-app/.agents/
-
-# For Claude Code, also copy the symlinked discovery directory
-cp -rP .claude/skills/ /path/to/your-rails-app/.claude/skills/
+# Copy the .claude/ directory into your Rails project
+cp -r .claude/ /path/to/your-rails-app/.claude/
 ```
 
-Skills auto-activate based on what you ask. Say "create a service object for order processing" and the `rails-service-object` skill kicks in. Say "write tests for this model" and `rspec-agent` takes over.
+Agents and skills auto-activate based on what you ask. Say "create a service object for order processing" and the `service-agent` takes over. Say "write tests for this model" and `rspec-agent` kicks in.
 
-You can also invoke them directly:
+You can also invoke skills directly:
 
 ```
 /feature-spec user registration
 /code-review
 /security-audit
-/tdd-red-agent
+/tdd-cycle
 ```
 
 ## What's Inside
 
-### Feature Specification Workflow
+### Agents (`.claude/agents/`)
 
-Three skills that take you from idea to implementation plan:
+18 specialist agents, each with `permissionMode: acceptEdits`, `memory: project`, `maxTurns` limits, and WHEN/WHEN NOT descriptions for auto-delegation.
 
-| Skill | Purpose |
-|---|---|
-| `feature-spec` | Structured interview to write a complete spec with Gherkin scenarios |
-| `feature-review` | Scores the spec 0-10, identifies gaps, generates missing scenarios |
-| `feature-plan` | Converts spec into a TDD implementation plan with PR breakdown |
-
-### TDD Workflow
-
-| Skill | Phase | What it does |
+| Agent | Domain | Model |
 |---|---|---|
-| `tdd-cycle` | All | Guides the full Red-Green-Refactor cycle |
-| `tdd-red-agent` | Red | Writes failing tests. Never touches `app/` |
-| `implementation-agent` | Green | Coordinates specialist agents to make tests pass |
-| `tdd-refactoring-agent` | Refactor | Improves code while keeping tests green |
-| `rspec-agent` | Any | Writes comprehensive specs for existing code |
+| `model-agent` | ActiveRecord models, validations, associations, scopes | sonnet |
+| `controller-agent` | Thin RESTful controllers, strong params, Pundit | sonnet |
+| `service-agent` | Service objects, Result pattern, SOLID | sonnet |
+| `migration-agent` | Safe, reversible database migrations | sonnet |
+| `policy-agent` | Pundit authorization policies | sonnet |
+| `form-agent` | Multi-model forms, wizard forms | sonnet |
+| `query-agent` | Complex queries, N+1 prevention | sonnet |
+| `presenter-agent` | View logic separation with SimpleDelegator | sonnet |
+| `viewcomponent-agent` | Reusable, tested UI components | sonnet |
+| `job-agent` | Background jobs with Solid Queue | sonnet |
+| `mailer-agent` | ActionMailer with previews and templates | sonnet |
+| `turbo-agent` | Turbo Frames, Streams, Drive | sonnet |
+| `stimulus-agent` | Stimulus controllers | sonnet |
+| `tailwind-agent` | Tailwind CSS styling | sonnet |
+| `rspec-agent` | RSpec tests (preloads `tdd-cycle` skill) | sonnet |
+| `implementation-agent` | TDD GREEN phase orchestrator (worktree isolation) | sonnet |
+| `tdd-refactoring-agent` | TDD REFACTOR phase (preloads `tdd-cycle` skill) | sonnet |
+| `lint-agent` | RuboCop linting and auto-correction | haiku |
 
-### Rails Layer Specialists
+### Skills (`.claude/skills/`)
 
-Isolated agents (`context: fork`) with deep domain knowledge:
+17 skills with reference docs. Two patterns: **task skills** (user-invocable workflows) and **knowledge skills** (auto-loaded conventions).
 
-| Skill | Domain |
+| Skill | Type | Purpose |
+|---|---|---|
+| `feature-spec` | Task | Structured interview to write a complete spec with Gherkin scenarios |
+| `feature-review` | Task | Scores specs 0-10, identifies gaps, generates missing scenarios |
+| `feature-plan` | Task | Converts spec into TDD implementation plan with PR breakdown |
+| `code-review` | Task | SOLID analysis, N+1 detection, anti-patterns (read-only) |
+| `security-audit` | Task | OWASP Top 10 audit with Brakeman (runs with opus) |
+| `tdd-cycle` | Task | Guides full Red-Green-Refactor cycle |
+| `frame-problem` | Task | Reframes vague requests into clear problems |
+| `rails-architecture` | Knowledge | Layered architecture decisions (runs with opus) |
+| `authentication-flow` | Knowledge | Rails 8 built-in authentication |
+| `caching-strategies` | Knowledge | Fragment, Russian doll, low-level caching |
+| `performance-optimization` | Knowledge | N+1 detection, query optimization |
+| `action-cable-patterns` | Knowledge | WebSocket real-time features |
+| `active-storage-setup` | Knowledge | File uploads and variants |
+| `api-versioning` | Knowledge | RESTful API design |
+| `i18n-patterns` | Knowledge | Internationalization |
+| `solid-queue-setup` | Knowledge | Background job configuration |
+| `rails-concern` | Knowledge | Shared behavior with concerns |
+
+### Rules (`.claude/rules/`)
+
+10 path-scoped rules that auto-load only when Claude works on matching files:
+
+| Rule | Scoped to |
 |---|---|
-| `model-agent` | ActiveRecord models, validations, associations, scopes |
-| `controller-agent` | Thin RESTful controllers, strong params, Pundit |
-| `service-agent` | Service objects, Result pattern, SOLID |
-| `migration-agent` | Safe, reversible database migrations |
-| `policy-agent` | Pundit authorization policies |
-| `form-agent` | Multi-model forms, wizard forms |
-| `query-agent` | Complex queries, N+1 prevention |
-| `presenter-agent` | View logic separation with SimpleDelegator |
-| `viewcomponent-agent` | Reusable, tested UI components |
-| `job-agent` | Background jobs with Solid Queue |
-| `mailer-agent` | ActionMailer with previews and templates |
-| `turbo-agent` | Turbo Frames, Streams, Drive |
-| `stimulus-agent` | Stimulus controllers |
-| `tailwind-agent` | Tailwind CSS styling |
-| `lint-agent` | RuboCop linting and auto-correction |
+| `models.md` | `app/models/**`, `spec/models/**`, `spec/factories/**` |
+| `controllers.md` | `app/controllers/**`, `spec/requests/**` |
+| `services.md` | `app/services/**`, `spec/services/**` |
+| `queries.md` | `app/queries/**`, `spec/queries/**` |
+| `policies.md` | `app/policies/**`, `spec/policies/**` |
+| `jobs.md` | `app/jobs/**`, `spec/jobs/**` |
+| `mailers.md` | `app/mailers/**`, `spec/mailers/**` |
+| `migrations.md` | `db/migrate/**`, `db/schema.rb` |
+| `views.md` | `app/views/**`, `app/components/**`, `app/presenters/**` |
+| `testing.md` | `spec/**` |
 
-### Pattern & Knowledge Skills
+### Hooks (`.claude/settings.json`)
 
-Injected inline (no subprocess) — they teach conventions:
+| Hook | Event | What it does |
+|---|---|---|
+| **SessionStart** | Session begins | Injects project context (branch, Ruby/Rails version, pending migrations) |
+| **PostToolUse** | After Edit/Write | Auto-formats Ruby files with RuboCop |
+| **PreToolUse** | Before Bash | Blocks destructive commands (rm -rf, DROP TABLE, force push to main) |
+| **TaskCompleted** | Task marked done | Quality gate: reminds to run tests and linting |
+| **Stop** | Response ends | Desktop notification |
 
-| Skill | Teaches |
-|---|---|
-| `rails-architecture` | Layered architecture, where to put code |
-| `rails-service-object` | Service object pattern with Result class |
-| `rails-model-generator` | Model generation with TDD |
-| `rails-controller` | Controller conventions with request specs |
-| `rails-concern` | Shared behavior with concerns |
-| `rails-presenter` | Presenter/decorator pattern |
-| `rails-query-object` | Query object pattern |
-| `authentication-flow` | Rails 8 built-in authentication |
-| `authorization-pundit` | Policy-based authorization |
-| `hotwire-patterns` | Turbo + Stimulus patterns |
-| `viewcomponent-patterns` | ViewComponent patterns |
-| `form-object-patterns` | Form object patterns |
-| `database-migrations` | Migration best practices |
-| `caching-strategies` | Fragment, Russian doll, low-level caching |
-| `performance-optimization` | N+1 detection, query optimization |
-| `action-cable-patterns` | WebSocket real-time features |
-| `action-mailer-patterns` | Transactional emails |
-| `active-storage-setup` | File uploads and variants |
-| `api-versioning` | RESTful API design |
-| `i18n-patterns` | Internationalization |
-| `solid-queue-setup` | Background job configuration |
+### Settings
 
-### Utilities
-
-| Skill | Purpose |
-|---|---|
-| `code-review` | SOLID analysis, N+1 detection, anti-patterns (read-only) |
-| `security-audit` | OWASP Top 10 audit with Brakeman |
-| `frame-problem` | Reframes vague requests into clear problems |
-| `refine-specification` | Clarifying questions for draft specs |
+- **Agent Teams** enabled (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS`)
+- **JSON Schema** for editor autocomplete
+- **Smart model routing**: opus for architecture/security, sonnet for coding, haiku for linting
 
 ## Typical Workflow
 
@@ -120,17 +117,45 @@ Injected inline (no subprocess) — they teach conventions:
 /feature-review features/checkout  # 2. Review and score it
 /feature-plan features/checkout    # 3. Break into PRs
 
-/tdd-red-agent                     # 4. Write failing tests (RED)
-/implementation-agent              # 5. Make them pass (GREEN)
-/tdd-refactoring-agent             # 6. Clean up (REFACTOR)
+# TDD cycle (agents auto-delegate)
+@rspec-agent write failing tests   # 4. RED
+@implementation-agent              # 5. GREEN (runs in worktree)
+@tdd-refactoring-agent             # 6. REFACTOR
 
 /code-review                       # 7. Quality check
 /security-audit                    # 8. Security check
 ```
 
+## Project Structure
+
+```
+.claude/
+  settings.json              # Hooks, env, Agent Teams
+  settings.local.json        # Local permissions (gitignored)
+  agents/                    # 18 specialist agents
+    model-agent.md
+    service-agent.md
+    ...
+    references/              # Agent reference docs (patterns, testing)
+      model/
+      service/
+      ...
+  skills/                    # 17 skills
+    feature-spec/SKILL.md
+    rails-architecture/SKILL.md
+    ...
+  rules/                     # 10 path-scoped rules
+    models.md
+    controllers.md
+    ...
+37signals_skills/            # 18 skills, 37signals/Basecamp style
+claude-code-extensibility-guide.md  # Comprehensive extensibility reference
+glossary.md                  # AI terminology glossary
+```
+
 ## 37signals Collection
 
-The `37signals_skills/` directory contains 18 skills following the Basecamp/HEY philosophy. Key differences from the main collection:
+The `37signals_skills/` directory contains 18 skills following the Basecamp/HEY philosophy:
 
 | | Main collection | 37signals |
 |---|---|---|
@@ -139,38 +164,10 @@ The `37signals_skills/` directory contains 18 skills following the Basecamp/HEY 
 | Shared behavior | Separate layers | Concerns everywhere |
 | Request context | Explicit params | `Current` attributes |
 | State | Enums / booleans | State as records |
-| IDs | Integer (default) | UUIDs |
-| Multi-tenancy | Various | URL-based with `Current.account` |
 
-To use them, copy `37signals_skills/` into your project's `.agents/skills/` directory.
+## Extensibility Guide
 
-## How Skills Work
-
-Each skill is a folder with a `SKILL.md` file:
-
-```
-skill-name/
-├── SKILL.md           # Frontmatter metadata + instructions
-└── reference/         # Optional supplementary docs
-    └── *.md
-```
-
-Two execution modes:
-
-- **Inline skills** — instructions are injected into the conversation. Low token cost. Good for conventions and patterns.
-- **Forked skills** (`context: fork`) — run in an isolated subprocess. Don't pollute your main context. Good for long-running tasks like reviews, audits, and code generation.
-
-Skills with `user-invocable: true` in their frontmatter appear as `/slash-commands`.
-
-## Project Structure
-
-```
-.agents/skills/          # 48 skills (canonical location)
-.claude/skills/          # Symlinks to .agents/skills/ (Claude Code discovery)
-37signals_skills/        # 18 skills, 37signals/Basecamp style
-skill_vs_agent.md        # Decision guide: skill vs agent
-universal_skills.md      # Agent Skills standard reference
-```
+The [Claude Code Extensibility Guide](claude-code-extensibility-guide.md) covers all extension mechanisms: CLAUDE.md, skills, hooks, subagents, Agent Teams, MCP servers, and plugins. Includes decision trees, configuration references, community patterns, and an adoption playbook.
 
 ## License
 

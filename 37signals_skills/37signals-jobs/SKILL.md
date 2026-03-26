@@ -5,7 +5,7 @@ description: >-
   Queue. Use when adding background processing, async operations, scheduled
   tasks, or when user mentions jobs, queues, Solid Queue, or background workers.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Solid Queue
+compatibility: Ruby 3.3+, Rails 8.0+, Solid Queue
 metadata:
   author: 37signals
   version: "1.0"

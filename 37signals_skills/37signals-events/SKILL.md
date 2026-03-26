@@ -5,7 +5,7 @@ description: >-
   patterns. Use when implementing audit trails, activity feeds, event sourcing,
   or when user mentions events, tracking, webhooks, or activity logs.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Solid Queue
+compatibility: Ruby 3.3+, Rails 8.0+, Solid Queue
 metadata:
   author: 37signals
   version: "1.0"

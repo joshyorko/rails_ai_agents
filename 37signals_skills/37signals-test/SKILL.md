@@ -6,7 +6,7 @@ description: >-
   writing tests, adding test coverage, or when user mentions testing, Minitest,
   fixtures, or integration tests.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Minitest
+compatibility: Ruby 3.3+, Rails 8.0+, Minitest
 metadata:
   author: 37signals
   version: "1.0"

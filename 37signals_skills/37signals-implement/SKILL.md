@@ -6,7 +6,7 @@ description: >-
   implementing a full feature end-to-end or when user mentions feature
   implementation, full-stack, or orchestration.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Turbo, Stimulus, Solid Queue
+compatibility: Ruby 3.3+, Rails 8.0+, Turbo, Stimulus, Solid Queue
 metadata:
   author: 37signals
   version: "1.0"

@@ -6,7 +6,7 @@ description: >-
   systems, or when user mentions mailers, emails, notifications, or transactional
   messages.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Action Mailer
+compatibility: Ruby 3.3+, Rails 8.0+, Action Mailer
 metadata:
   author: 37signals
   version: "1.0"

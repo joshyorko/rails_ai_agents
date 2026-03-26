@@ -6,7 +6,7 @@ description: >-
   migrating to modern Rails patterns, or when user mentions refactoring, code
   improvement, or technical debt.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+
+compatibility: Ruby 3.3+, Rails 8.0+
 metadata:
   author: 37signals
   version: "1.0"

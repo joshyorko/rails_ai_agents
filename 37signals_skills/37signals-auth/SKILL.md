@@ -5,7 +5,7 @@ description: >-
   up authentication, login flows, session management, password resets, or when
   user mentions auth, login, passwordless, or sessions.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+
+compatibility: Ruby 3.3+, Rails 8.0+
 metadata:
   author: 37signals
   version: "1.0"

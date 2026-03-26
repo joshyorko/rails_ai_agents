@@ -6,7 +6,7 @@ description: >-
   endpoints, JSON responses, token authentication, or when user mentions API,
   JSON, REST, or Jbuilder.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Jbuilder
+compatibility: Ruby 3.3+, Rails 8.0+, Jbuilder
 metadata:
   author: 37signals
   version: "1.0"

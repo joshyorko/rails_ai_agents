@@ -6,7 +6,7 @@ description: >-
   UI interactions, form enhancements, or when user mentions Stimulus, JavaScript
   controllers, or sprinkles.
 license: MIT
-compatibility: Stimulus 3.2+, Turbo 8+, Importmap
+compatibility: Stimulus 3.2+, Turbo 8.0+, Importmap
 metadata:
   author: 37signals
   version: "1.0"

@@ -6,7 +6,7 @@ description: >-
   columns, modifying schema, or when user mentions migrations, database
   structure, or schema changes.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, MySQL/SQLite
+compatibility: Ruby 3.3+, Rails 8.0+, MySQL/SQLite
 metadata:
   author: 37signals
   version: "1.0"

@@ -13,3 +13,4 @@
 # Claude Code local state
 .claude/projects/
 .claude/todos/
+.claude/settings.local.json

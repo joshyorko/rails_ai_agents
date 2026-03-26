@@ -5,7 +5,7 @@ description: >-
   Use when optimizing performance, adding caching layers, or when user mentions
   ETags, HTTP caching, fresh_when, stale?, cache keys, or Russian doll caching.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Solid Cache
+compatibility: Ruby 3.3+, Rails 8.0+, Solid Cache
 metadata:
   author: 37signals
   version: "1.0"

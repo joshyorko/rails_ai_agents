@@ -6,7 +6,7 @@ description: >-
   page navigation, form submissions, or when user mentions Turbo, Streams,
   Frames, Drive, or morphing.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+, Turbo 8+
+compatibility: Ruby 3.3+, Rails 8.0+, Turbo 8+
 metadata:
   author: 37signals
   version: "1.0"

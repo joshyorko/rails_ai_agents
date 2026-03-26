@@ -6,7 +6,7 @@ description: >-
   philosophy. Use when creating models, adding validations, scopes, callbacks,
   or business logic methods.
 license: MIT
-compatibility: Ruby 3.3+, Rails 8.2+
+compatibility: Ruby 3.3+, Rails 8.0+
 metadata:
   author: 37signals
   version: "1.0"

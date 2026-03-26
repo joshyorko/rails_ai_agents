@@ -1,1 +1,0 @@
-../../feature-spec/references/FEATURE_TEMPLATE.md
